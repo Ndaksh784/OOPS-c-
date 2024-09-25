@@ -1,0 +1,46 @@
+Construct a Program in C++ to show the working of function overloading(compile time polymorphism) by using a function named calculate Area () to calculate area of square, rectangle and triangle using different signatures as require
+
+
+
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    
+    int calculateArea(int side) {
+        return side * side;
+    }
+
+    int calculateArea(int length, int width) {
+        return length * width;
+    }
+
+    
+    double calculateArea(double base, double height) {
+        return 0.5 * base * height;
+    }
+};
+
+int main() {
+    Shape shape;
+    int side, length, width;
+    double base, height;
+
+    
+    cout << "Enter side of square: ";
+    cin >> side;
+    cout << "Area of square: " << shape.calculateArea(side) << endl;
+
+    
+    cout << "Enter length and width of rectangle: ";
+    cin >> length >> width;
+    cout << "Area of rectangle: " << shape.calculateArea(length, width) << endl;
+
+    
+    cout << "Enter base and height of triangle: ";
+    cin >> base >> height;
+    cout << "Area of triangle: " << shape.calculateArea(base, height) << endl;
+
+    return 0;
+}
