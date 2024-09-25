@@ -1,0 +1,61 @@
+Imagine a tollbooth with a class called TollBooth. The two data items are of type unsigned int and double to hold the total number of cars and totalamount of money collected. A constructor initializes both of these data 
+members to 0. A member function called payingCar( )increments the car total and adds 0.5 to the cash total. Another function called nonPayCar( ) increments the car total but adds nothing to the cash total. Finally a member function called display( )shows the two totals. Include a program to test this 
+class. This program should allow the user to push one key to count a paying car and another to count a non paying car. Pushing the ESC key should cause the program to print out the total number of cars and total cash and
+then exit.
+
+#include <iostream>
+#include <conio.h> 
+using namespace std;
+
+class TollBooth {
+private:
+    static int carCount;  
+    static double cashTotal;       
+
+public:
+    
+    TollBooth() {}
+
+   
+    void payingCar() {
+        carCount++;
+        cashTotal += 0.5;  
+    }
+
+    void nonPayCar() {
+        carCount++;  
+    }
+
+   
+    static void display() {  
+        cout << "Total number of cars: " << carCount << endl;
+        cout << "Total cash collected: $" << cashTotal << endl;
+    }
+};
+
+
+int TollBooth::carCount = 0; 
+double TollBooth::cashTotal = 0.0;    
+int main() {
+    TollBooth tollbooth; 
+    char choice;
+
+    cout << "Press 'P' for a paying car, 'N' for a non-paying car, or 'ESC' to exit." << endl;
+
+    while (true) {
+        cout<<"Enter choice"<<endl;
+        choice = _getch();  
+
+        if (choice == 27) { 
+            TollBooth::display();  
+            break; 
+        } else if (choice == 'P' || choice == 'p') {
+            tollbooth.payingCar(); 
+        } else if (choice == 'N' || choice == 'n') {
+            tollbooth.nonPayCar();   
+        }
+    }
+
+    return 0;
+}
+
